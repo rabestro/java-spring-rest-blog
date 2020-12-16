@@ -23,7 +23,7 @@ public class Author {
     @JsonIgnore
     private String password;
     @OneToMany
-    private List<Post> posts;
+    private final List<Post> posts;
 
     public Author() {
         super();
@@ -36,10 +36,6 @@ public class Author {
         this.lastname = lastname;
         this.username = username;
         setPassword(password);
-    }
-
-    public void setPassword(String password) {
-        this.password = PASSWORD_ENCODER.encode(password);
     }
 
     public Long getId() {
@@ -72,6 +68,10 @@ public class Author {
 
     public String getPassword() {
         return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = PASSWORD_ENCODER.encode(password);
     }
 
     @Override
