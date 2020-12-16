@@ -13,6 +13,7 @@ import java.util.stream.IntStream;
 
 @Component
 public class DatabaseLoader implements ApplicationRunner {
+    private final AuthorRepository authorRepository;
     private final PostRepository postRepository;
     private final String[] templates = {
             "Smart Home %s", "Mobile %s - For When You're On he Go", "The %s - Your New Favorite Accessory"};
@@ -22,7 +23,8 @@ public class DatabaseLoader implements ApplicationRunner {
     public List<Author> authors = new ArrayList<>();
 
     @Autowired
-    public DatabaseLoader(PostRepository postRepository) {
+    public DatabaseLoader(AuthorRepository authorRepository, PostRepository postRepository) {
+        this.authorRepository = authorRepository;
         this.postRepository = postRepository;
     }
 
